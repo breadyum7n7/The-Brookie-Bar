@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brookie Bar</title>
+    <style>
+        body {
+            background-color: #F5CBA7;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .header {
+            background-color: #A76D42;
+            padding: 30px;
+            position: relative;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 50% 100%, 0% 85%);
+            color: white;
+        }
+        .logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            height: 100px;
+        }
+        .header h1 {
+            font-size: 2em;
+            font-weight: bold;
+            margin: 0;
+        }
+        .header p {
+            font-size: 1em;
+            margin: 10px 0;
+        }
+        .products {
+            padding: 20px;
+        }
+        .products h2 {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .product-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        .product {
+            width: 200px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .product:hover {
+            transform: scale(1.1); /* Slight zoom effect */
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Soft shadow */
+        }
+        .product img {
+            width: 100%;
+            border-radius: 10px;
+            border: 3px solid black;
+            transition: transform 0.3s ease;
+        }
+        .credits {
+            padding: 20px;
+            background-color: #A76D42;
+            color: white;
+        }
+
+        /* Modal Styling */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .modal-content {
+            background-color: #FAE5D3;
+            margin: 10% auto;
+            padding: 20px;
+            border: 2px solid #A76D42;
+            width: 50%;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+        }
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 25px;
+            cursor: pointer;
+        }
+        .modal img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="home" class="header">
+        <img src="Brookie bar logo.png" alt="Brookie Bar Logo" class="logo">
+        <h1>Welcome to the Brookie Bar!</h1>
+        <p>I hope you are satisfied with our products and our affordable prices and I hope you have a wonderful time and start pre-ordering now!!</p>
+    </div>
+    
+    <div id="products" class="products">
+        <h2>Our Products!!</h2>
+        <div class="product-container">
+            <div class="product" onclick="openModal('Brookie', 'brookie.jpg', 'A delicious combination of brownie and cookie in one bite!', '5 AED')">
+                <img src="brookie.jpg" alt="Brookie">
+                <p>Brookie - 5 AED</p>
+            </div>
+            <div class="product" onclick="openModal('Chocolate Chip Cookie', 'chocolatecookie.jpg', 'A classic soft and chewy chocolate chip cookie.', '5 AED')">
+                <img src="chocolatecookie.jpg" alt="Chocolate Chip Cookie">
+                <p>Chocolate Chip Cookie - 5 AED</p>
+            </div>
+            <div class="product" onclick="openModal('S\'more Cookie', 'smorecookie.jpg', 'A soft cookie loaded with chocolate and marshmallow goodness!', '5 AED')">
+                <img src="smorecookie.jpg" alt="Smore Cookie">
+                <p>S\'more Cookie - 5 AED</p>
+            </div>
+        </div>
+    </div>
+    
+    <div id="credits" class="credits">
+        <h2>Contact us!!: @brookiebarauh (on instagram) </h2>
+        <p>© 2025 The Brookie Bar. All rights reserved.</p>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <img id="modalImage" src="" alt="">
+            <p id="modalDescription"></p>
+            <p><strong id="modalPrice"></strong></p>
+        </div>
+    </div>
+
+    <script>
+        function openModal(title, image, description, price) {
+            document.getElementById("modalTitle").innerText = title;
+            document.getElementById("modalImage").src = image;
+            document.getElementById("modalDescription").innerText = description;
+            document.getElementById("modalPrice").innerText = price;
+            document.getElementById("productModal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("productModal").style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
